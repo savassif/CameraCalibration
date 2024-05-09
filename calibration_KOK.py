@@ -1,4 +1,4 @@
-second_attemptimport numpy as np
+import numpy as np
 import cv2 as cv
 import glob
 import pickle
@@ -7,8 +7,8 @@ import pickle
 
 ################ FIND CHESSBOARD CORNERS - OBJECT POINTS AND IMAGE POINTS #############################
 
-chessboardSize = (9,6)
-frameSize = (1024,1024)
+chessboardSize = (7,4)
+frameSize = (1024,604)
 
 
 # termination criteria
@@ -19,7 +19,7 @@ criteria = (cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 objp = np.zeros((chessboardSize[0] * chessboardSize[1], 3), np.float32)
 objp[:,:2] = np.mgrid[0:chessboardSize[0],0:chessboardSize[1]].T.reshape(-1,2)
 
-size_of_chessboard_squares_mm = 261
+size_of_chessboard_squares_mm = 25
 objp = objp * size_of_chessboard_squares_mm
 
 
@@ -28,7 +28,7 @@ objpoints = [] # 3d point in real world space
 imgpoints = [] # 2d points in image plane.
 
 
-images = glob.glob('cameraCalibration/images/*.bmp')
+images = glob.glob('images_v3/*.png')
 
 for image in images:
 
